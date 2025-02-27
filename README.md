@@ -1,7 +1,7 @@
 # sha256.h: A SHA-256 stb-style header only library
 
 [![patreon](https://img.shields.io/badge/patreon-FF5441?style=for-the-badge&logo=Patreon)](https://www.patreon.com/hughdavenport)
-[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=TODO&list=TODO)
+[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=O3GeLGL6Bmc)
 
 This repo contains a [stb-style](https://github.com/nothings/stb/blob/master/docs/stb_howto.txt) header only library. You only need the [sha256.h](https://github.com/hughdavenport/sha256.h/raw/refs/heads/main/sha256.h) file.
 
