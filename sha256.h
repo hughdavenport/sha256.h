@@ -26,7 +26,7 @@ SOFTWARE.
 #define SHA256_H
 
 #define SHA256_H_VERSION_MAJOR 1
-#define SHA256_H_VERSION_MINOR 0
+#define SHA256_H_VERSION_MINOR 1
 #define SHA256_H_VERSION_PATCH 0
 
 #include <stdint.h>
@@ -43,17 +43,17 @@ SOFTWARE.
 #define SHA256_DIGEST_HEX_LENGTH 2 * SHA256_DIGEST_BYTE_LENGTH
 
 #define SHA256_SNPRINTF_HEX(str, n, hash) do { \
-    for (size_t i = 0; i < ((n) / 2 < SHA256_DIGEST_BYTE_LENGTH ? (n) / 2 : SHA256_DIGEST_BYTE_LENGTH); i ++) { \
-        snprintf((str) + i * 2, (n) - i * 2, "%02x", (hash)[i]); \
+    for (size_t sha256_snprintf_i = 0; sha256_snprintf_i < ((n) / 2 < SHA256_DIGEST_BYTE_LENGTH ? (n) / 2 : SHA256_DIGEST_BYTE_LENGTH); sha256_snprintf_i ++) { \
+        snprintf((str) + sha256_snprintf_i * 2, (n) - sha256_snprintf_i * 2, "%02x", (hash)[sha256_snprintf_i]); \
     } \
 } while (0)
 #define SHA256_DPRINTF_HEX(fd, hash) do { \
-    for (size_t i = 0; i < SHA256_DIGEST_BYTE_LENGTH; i ++) { \
-        dprintf((fd), "%02x", (hash)[i]); \
+    for (size_t sha256_dprintf_i = 0; sha256_dprintf_i < SHA256_DIGEST_BYTE_LENGTH; sha256_dprintf_i ++) { \
+        dprintf((fd), "%02x", (hash)[sha256_dprintf_i]); \
     } \
 } while (0)
-#define SHA256_FPRINTF_HEX(file, hash) SHA256_DPRINTF_HEX(fileno((file)), (hash))
-#define SHA256_PRINTF_HEX(hash) SHA256_DPRINTF_HEX(STDOUT_FILENO, (hash))
+#define SHA256_FPRINTF_HEX(file, hash) do { fflush((file)); SHA256_DPRINTF_HEX(fileno((file)), (hash)); } while (false)
+#define SHA256_PRINTF_HEX(hash) do { fflush(stdout); SHA256_DPRINTF_HEX(STDOUT_FILENO, (hash)); } while (false)
 
 bool sha256_digest(const uint8_t *data,
                 size_t length,
