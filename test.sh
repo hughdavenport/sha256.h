@@ -2,8 +2,8 @@
 
 set -eou pipefail
 
-gcc -ggdb -fsanitize=address -Wall -Wextra -Wpedantic -Werror -o test-stdin test-stdin.c
-gcc -ggdb -fsanitize=address -Wall -Wextra -Wpedantic -Werror -o test-monte test-monte.c
+${CC:-cc} -ggdb -fsanitize=address -Wall -Wextra -Wpedantic -Werror -o test-stdin test-stdin.c
+${CC:-cc} -ggdb -fsanitize=address -Wall -Wextra -Wpedantic -Werror -o test-monte test-monte.c
 
 err() { echo "Error."; exit 1; }
 url() { printf "\e]8;;%s\e\\%s\e]8;;\e\\" "$1" "$1"; }

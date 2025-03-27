@@ -99,7 +99,7 @@ const uint32_t K[64] = {
   0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
-void _sha256_process_block(uint8_t M[_SHA256_BLOCK_SIZE], uint32_t H[5]) {
+void _sha256_process_block(uint8_t M[_SHA256_BLOCK_SIZE], uint32_t H[8]) {
     // Defined in RFC 6234 Section 6.2
 
     // Names from RFC 6234
@@ -159,7 +159,7 @@ void _sha256_process_block(uint8_t M[_SHA256_BLOCK_SIZE], uint32_t H[5]) {
     H[7] += h;
 }
 
-void _sha256_pad_block(uint8_t M[_SHA256_BLOCK_SIZE], uint32_t H[5], uint64_t length) {
+void _sha256_pad_block(uint8_t M[_SHA256_BLOCK_SIZE], uint32_t H[8], uint64_t length) {
     // Defined in RFC 6234 Section 4.1
 
     assert(length < _SHA256_MAX_LENGTH);
